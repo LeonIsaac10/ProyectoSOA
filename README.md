@@ -18,7 +18,7 @@ Los experimentos fueron diseñados para ejecutarse en un entorno Linux (Ubuntu 2
 
 ### Paso 1: Instrucciones de Compilación (Requisito Previo)
 
-Para garantizar la integridad académica y evitar subir binarios masivos, este repositorio aloja únicamente el código fuente de los motores en C/C++. Antes de ejecutar las pruebas, es obligatorio compilar la herramienta de estrés `db_bench` en el directorio de cada motor.
+Para evitar subir binarios masivos, este repositorio aloja únicamente el código fuente de los motores en C/C++. Antes de ejecutar las pruebas, es obligatorio compilar la herramienta de estrés `db_bench` en el directorio de cada motor.
 
 **Para RocksDB y Speedb (basados en CMake):**
 Desde el directorio raíz del motor (`poc_rocksdb` o `poc_speedb`), ejecuta:
