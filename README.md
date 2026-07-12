@@ -1,4 +1,4 @@
-# Evaluación de Estructuras Probabilísticas en Motores LSM-Tree y Proxies HTTP
+# Evaluación de Estructuras Probabilísticas en Motores LSM-Tree
 
 **Autor:** Isaac León y Maykoll Vanegas
 
