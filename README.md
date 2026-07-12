@@ -18,11 +18,11 @@ Los experimentos fueron diseñados para ejecutarse en un entorno Linux (Ubuntu 2
 
 Para estresar los motores KVS, forzar el *thrashing* de la memoria RAM y evaluar el Filtro de Bloom, se utilizó la herramienta nativa `db_bench` con una limitación estricta de caché de 8 MB y la compresión Snappy deshabilitada.
 
+El parámetro --statistics=1 incluido al final de los comandos solo debe utilizarse al evaluar RocksDB y Speedb, ya que activa la recolección de estadísticas internas necesarias para auditar los falsos positivos del Filtro de Bloom y los aciertos/fallos de la caché de bloques.
+
 Navega al directorio `build/` del motor deseado y ejecuta los siguientes comandos según la escala de la prueba:
 
 ### Prueba Base: 1 Millón de Registros
 ```bash
 ./db_bench --benchmarks="fillrandom,readrandom" --num=1000000 --reads=1000000 --bloom_bits=10 --compression_type=none --cache_size=8388608 --statistics=1
 
-### Nota
-El parámetro --statistics=1 incluido al final de los comandos solo debe utilizarse al evaluar RocksDB y Speedb, ya que activa la recolección de estadísticas internas necesarias para auditar los falsos positivos del Filtro de Bloom y los aciertos/fallos de la caché de bloques.
