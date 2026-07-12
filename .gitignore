@@ -1,0 +1,35 @@
+# 1. Ignorar proyectos y herramientas excluidas del paper
+poc_forestdb/
+poc_titan/
+poc_wiredtiger/
+poc_ats/
+ats_build/
+poc_squid/
+squid_build/
+test_web/
+ycsb-*/
+ycsb-source/
+*.tar.gz
+
+# 2. Ignorar carpetas de compilación en los motores permitidos
+build/
+.libs/
+CMakeFiles/
+CMakeCache.txt
+
+# 3. Ignorar ejecutables y objetos C++
+*.o
+*.a
+*.so
+*.bin
+db_bench
+
+# 4. Ignorar datos masivos del experimento (MemTables y SSTables)
+*.sst
+*.log
+*.db
+LOCK
+MANIFEST-*
+CURRENT
+LOG
+LOG.old
