@@ -1,4 +1,4 @@
-# Evaluación de Estructuras Probabilísticas en Motores LSM-Tree
+# Evaluación de Estructuras Probabilísticas en Motores LSM-Trees
 
 **Autor:** Isaac León y Maykoll Vanegas
 
