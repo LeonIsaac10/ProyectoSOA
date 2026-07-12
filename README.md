@@ -28,24 +28,36 @@ Desde el directorio raíz del motor (`poc_rocksdb` o `poc_speedb`), ejecuta:
 mkdir -p build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make db_bench -j$(nproc)
+```
 
-(Nota: Para LevelDB/HyperLevelDB, la compilación estándar se realiza en el directorio raíz usando make -j$(nproc)).
+> **Nota:** Para **LevelDB** y **HyperLevelDB**, la compilación estándar se realiza desde el directorio raíz usando:
+
+```bash
+make -j$(nproc)
+```
 
 ## Paso 2: Ejecución de las Pruebas de Estrés
-Para estresar los motores KVS, forzar el *thrashing* de la memoria RAM y evaluar el Filtro de Bloom, se utilizó la herramienta nativa `db_bench` con una limitación estricta de caché de 8 MB y la compresión Snappy deshabilitada.
 
-El parámetro --statistics=1 incluido al final de los comandos solo debe utilizarse al evaluar RocksDB y Speedb, ya que activa la recolección de estadísticas internas necesarias para auditar los falsos positivos del Filtro de Bloom y los aciertos/fallos de la caché de bloques.
+Para estresar los motores KVS, forzar el *thrashing* de la memoria RAM y evaluar el Filtro de Bloom, se utilizó la herramienta nativa `db_bench` con una limitación estricta de caché de **8 MB** y la compresión **Snappy** deshabilitada.
 
-Navega al directorio `build/` del motor deseado y ejecuta los siguientes comandos según la escala de la prueba:
+> **Importante:** El parámetro `--statistics=1` solo debe utilizarse al evaluar **RocksDB** y **Speedb**, ya que habilita la recolección de estadísticas internas necesarias para auditar los falsos positivos del Filtro de Bloom y los aciertos/fallos de la caché de bloques.
+
+Navega al directorio `build/` del motor deseado y ejecuta el comando correspondiente.
 
 ### Prueba Base: 1 Millón de Registros
+
 ```bash
 ./db_bench --benchmarks="fillrandom,readrandom" --num=1000000 --reads=1000000 --bloom_bits=10 --compression_type=none --cache_size=8388608 --statistics=1
+```
 
 ### Prueba Intermedia: 2.5 Millones de Registros
+
 ```bash
 ./db_bench --benchmarks="fillrandom,readrandom" --num=2500000 --reads=2500000 --bloom_bits=10 --compression_type=none --cache_size=8388608 --statistics=1
+```
 
 ### Prueba de Estrés Extremo: 5 Millones de Registros
+
 ```bash
 ./db_bench --benchmarks="fillrandom,readrandom" --num=5000000 --reads=5000000 --bloom_bits=10 --compression_type=none --cache_size=8388608 --statistics=1
+```
